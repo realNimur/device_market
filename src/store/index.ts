@@ -7,3 +7,5 @@ export const store = createStore(combineReducers({
     user: userReducer,
     device: deviceReducer,
 }), composeWithDevTools());
+
+export const globalStoreType = typeof store;

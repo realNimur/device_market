@@ -14,7 +14,7 @@ export const initialState = {
         {id: 4, name: 'Iphone 4', price: 40000, rating: 4.5, img: '123'},
     ]
 }
-export type userStoreType = typeof initialState;
+export type deviceStoreType = typeof initialState;
 
 type actionType = {
     type: string

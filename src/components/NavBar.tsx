@@ -1,11 +1,11 @@
 import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {selectIsAuth} from "../../store/User/selectors";
+import {selectIsAuth} from "../store/selectors";
 import {Button, Container, Nav, Navbar} from "react-bootstrap";
 import {NavLink} from "react-router-dom";
-import {SHOP_ROUTE} from "../../utils/consts";
+import {SHOP_ROUTE} from "../utils/consts";
 import styled from "styled-components";
-import {setAuth} from "../../store/User/actionUser";
+import {setAuth} from "../store/User/actionUser";
 
 const NavLinkStyled = styled(NavLink)`
   color: white;

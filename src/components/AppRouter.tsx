@@ -2,7 +2,7 @@ import React from 'react';
 import {Navigate, Route, Routes} from "react-router-dom";
 import {authRoutes, publicRoutes} from "../routes";
 import {useSelector} from "react-redux";
-import {selectIsAuth} from "../store/User/selectors";
+import {selectIsAuth} from "../store/selectors";
 import styled from "styled-components";
 
 const AppRouterWrapper = styled.div`

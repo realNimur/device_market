@@ -1,4 +1,4 @@
-import {SET_SELECTED_TYPE} from "./actionDevice";
+import {SET_SELECTED_BRAND, SET_SELECTED_TYPE} from "./actionDevice";
 
 
 export const initialState = {
@@ -11,6 +11,8 @@ export const initialState = {
     brands: [
         {id: 1, name: 'Samsung'},
         {id: 2, name: 'Apple'},
+        {id: 3, name: 'Lenovo'},
+        {id: 4, name: 'Asus'},
     ],
     devices: [
         {id: 1, name: 'Iphone 1', price: 25000, rating: 4.1, img: '123'},
@@ -19,13 +21,20 @@ export const initialState = {
         {id: 4, name: 'Iphone 4', price: 40000, rating: 4.5, img: '123'},
     ],
     selectedParam: {
-        type: null,
-        brand: null,
+        type: {
+            id: null,
+            name: null
+        },
+        brand: {
+            id: null,
+            name: null
+        },
     }
 }
 export type deviceStoreType = typeof initialState;
 
-export type selectedParamType = { id: number, name: string } | null;
+export type selectedParamType = { id: number | null, name: string | null };
+export type selectedParamBrand = { id: number | null, name: string | null };
 
 type actionType = {
     type: string
@@ -40,6 +49,15 @@ export const deviceReducer = (state = initialState, {type, payload}: actionType)
                 selectedParam: {
                     ...state.selectedParam,
                     type: payload
+                }
+            }
+        }
+        case SET_SELECTED_BRAND: {
+            return {
+                ...state,
+                selectedParam: {
+                    ...state.selectedParam,
+                    brand: payload
                 }
             }
         }

@@ -1,5 +1,5 @@
 import {userStoreType} from "./User/UserStore";
-import {deviceStoreType, selectedParamType} from "./Device/DeviceStore";
+import {deviceStoreType, selectedParamBrand, selectedParamType} from "./Device/DeviceStore";
 
 type stateType = {
     user: userStoreType,
@@ -7,4 +7,6 @@ type stateType = {
 }
 export const selectIsAuth = (state: stateType) => state.user.isAuth
 export const selectDevicesTypes = (state: stateType) => state.device.types
-export const selectDeviceType = (state: stateType) : selectedParamType => state.device.selectedParam.type
+export const selectDevicesBrands = (state: stateType) => state.device.brands
+export const selectDeviceType = (state: stateType): selectedParamType => state.device.selectedParam.type
+export const selectDeviceBrand = (state: stateType): selectedParamBrand => state.device.selectedParam.brand

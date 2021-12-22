@@ -15,10 +15,10 @@ export const initialState = {
         {id: 4, name: 'Asus'},
     ],
     devices: [
-        {id: 1, name: 'Iphone 1', price: 25000, rating: 4.1, img: '123'},
-        {id: 2, name: 'Iphone 2', price: 30000, rating: 4.2, img: '123'},
-        {id: 3, name: 'Iphone 3', price: 35000, rating: 4.3, img: '123'},
-        {id: 4, name: 'Iphone 4', price: 40000, rating: 4.5, img: '123'},
+        {id: 1, name: 'Iphone 1', price: 25000, rating: 4.1, img: 'https://via.placeholder.com/250'},
+        {id: 2, name: 'Iphone 2', price: 30000, rating: 4.2, img: 'https://via.placeholder.com/250'},
+        {id: 3, name: 'Iphone 3', price: 35000, rating: 4.3, img: 'https://via.placeholder.com/250'},
+        {id: 4, name: 'Iphone 4', price: 40000, rating: 4.5, img: 'https://via.placeholder.com/250'},
     ],
     selectedParam: {
         type: {
@@ -33,6 +33,7 @@ export const initialState = {
 }
 export type deviceStoreType = typeof initialState;
 
+export type deviceType = { id: number, name: string, price: number, rating: number, img: string };
 export type selectedParamType = { id: number | null, name: string | null };
 export type selectedParamBrand = { id: number | null, name: string | null };
 

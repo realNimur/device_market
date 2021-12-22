@@ -1,10 +1,13 @@
 import React from 'react';
+import {Container, Row} from "react-bootstrap";
 
 const Shop = () => {
     return (
-        <div>
-            shop
-        </div>
+        <Container>
+            <Row>
+
+            </Row>
+        </Container>
     );
 };
 

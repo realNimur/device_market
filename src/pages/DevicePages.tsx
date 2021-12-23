@@ -59,7 +59,7 @@ const DevicePages = () => {
                 <Table striped bordered hover variant="light">
                     <thead>
                     <tr>
-                        <th>Названите</th>
+                        <th>Название</th>
                         <th>Значение</th>
                     </tr>
                     </thead>

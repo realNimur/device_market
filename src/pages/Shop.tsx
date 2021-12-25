@@ -5,13 +5,13 @@ import BrandBar from "../components/BrandBar";
 import DeviceList from "../components/DeviceList";
 import {useDispatch} from "react-redux";
 import {fetchBrands, fetchDevices, fetchTypes} from "../http/deviceAPI";
-import {setBrands, setDevices} from "../store/Device/actionDevice";
+import {setBrands, setDevices, setTypes} from "../store/Device/actionDevice";
 
 const Shop = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        fetchTypes().then(data => dispatch(setDevices(data)));
+        fetchTypes().then(data => dispatch(setTypes(data)));
         fetchBrands().then(data => dispatch(setBrands(data)));
         fetchDevices().then(data => dispatch(setDevices(data.rows)));
     }, [])

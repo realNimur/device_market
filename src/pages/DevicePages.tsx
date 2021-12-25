@@ -29,7 +29,7 @@ const CardDeviceStyled = styled(Card)`
 type DeviceParamsInfo = {
     id: number | null
     title: string | null
-    value: string | null
+    description: string | null
 }
 
 type DeviceParams = {
@@ -60,7 +60,7 @@ const DevicePages = () => {
         info: [{
             id: null,
             title: null,
-            value: null,
+            description: null,
         }]
     });
     const {id} = useParams();
@@ -102,7 +102,7 @@ const DevicePages = () => {
                     {device.info.map((info) =>
                         <tr key={info.id}>
                             <td>{info.title}</td>
-                            <td>{info.value}</td>
+                            <td>{info.description}</td>
                         </tr>
                     )}
                     </tbody>

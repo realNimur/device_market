@@ -1,4 +1,4 @@
-import {SET_SELECTED_BRAND, SET_SELECTED_TYPE} from "./actionDevice";
+import {SET_BRANDS, SET_DEVICES, SET_SELECTED_BRAND, SET_SELECTED_TYPE, SET_TYPES} from "./actionDevice";
 
 
 export const initialState = {
@@ -30,6 +30,24 @@ type actionType = {
 
 export const deviceReducer = (state = initialState, {type, payload}: actionType) => {
     switch (type) {
+        case SET_TYPES: {
+            return {
+                ...state,
+                types: payload
+            }
+        }
+        case SET_BRANDS: {
+            return {
+                ...state,
+                brands: payload
+            }
+        }
+        case SET_DEVICES: {
+            return {
+                ...state,
+                devices: payload
+            }
+        }
         case SET_SELECTED_TYPE: {
             return {
                 ...state,

@@ -1,7 +1,9 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Button, Card, Col, Container, Image, Row, Table} from "react-bootstrap";
 import bigStar from '../assets/img/bigStar.svg';
 import styled from "styled-components";
+import {useParams} from "react-router-dom";
+import {fetchOneDevices} from "../http/deviceAPI";
 
 const RatingStyled = styled.div`
   width: 75px;
@@ -24,24 +26,57 @@ const CardDeviceStyled = styled(Card)`
   border: 5px solid lightgray;
 `
 
+type DeviceParamsInfo = {
+    id: number | null
+    title: string | null
+    value: string | null
+}
+
+type DeviceParams = {
+    name: string | null
+    img: string | null
+    rating: number | null
+    price: number | null
+    info: DeviceParamsInfo[]
+}
+
 const DevicePages = () => {
-    const device = {id: 1, name: 'Iphone 1', price: 25000, rating: 4.1, img: 'https://via.placeholder.com/250'};
-    const description = [
-        {id: 1, title: 'Физическая память', value: '4, 8, 16 Гб'},
-        {id: 2, title: 'Размеры', value: '115.5 х 61 х 11.6 мм.'},
-        {id: 3, title: 'Вес устройства', value: '135 г.'},
-        {id: 4, title: 'ОЗУ', value: '128Мб'},
-        {id: 5, title: 'Частота процессора', value: '620 МГц'},
-        {id: 6, title: 'Разрешение экрана', value: '320 х 480'},
-        {id: 7, title: 'Камера ', value: '2.0 Мегапикселя'},
-        {id: 8, title: 'Датчики', value: 'акселерометр, датчики освещённости и приближения'},
-    ]
+    // const device = {id: 1, name: 'Iphone 1', price: 25000, rating: 4.1, img: 'https://via.placeholder.com/250'};
+    // const description = [
+    //     {id: 1, title: 'Физическая память', value: '4, 8, 16 Гб'},
+    //     {id: 2, title: 'Размеры', value: '115.5 х 61 х 11.6 мм.'},
+    //     {id: 3, title: 'Вес устройства', value: '135 г.'},
+    //     {id: 4, title: 'ОЗУ', value: '128Мб'},
+    //     {id: 5, title: 'Частота процессора', value: '620 МГц'},
+    //     {id: 6, title: 'Разрешение экрана', value: '320 х 480'},
+    //     {id: 7, title: 'Камера ', value: '2.0 Мегапикселя'},
+    //     {id: 8, title: 'Датчики', value: 'акселерометр, датчики освещённости и приближения'},
+    // ]
+    const [device, setDevice] = useState<DeviceParams>({
+        name: null,
+        img: null,
+        rating: null,
+        price: null,
+        info: [{
+            id: null,
+            title: null,
+            value: null,
+        }]
+    });
+    const {id} = useParams();
+
+    useEffect(() => {
+        fetchOneDevices(id).then(data => setDevice(data))
+    }, [])
+
     return (
         <Container className={'mt-2'}>
             <Row>
                 <Col md={8} className='d-flex flex-column justify-content-center align-items-center position-relative'>
                     <h2>{device.name}</h2>
-                    <Image width={300} height={300} src={device.img} />
+                    {
+                        device.img && <Image width={300} height={300} src={process.env.REACT_APP_API_URL + device.img} />
+                    }
                     <RatingStyled>
                         <h2 className={'mb-0'}>{device.rating}</h2>
                     </RatingStyled>
@@ -64,7 +99,7 @@ const DevicePages = () => {
                     </tr>
                     </thead>
                     <tbody>
-                    {description.map((info) =>
+                    {device.info.map((info) =>
                         <tr key={info.id}>
                             <td>{info.title}</td>
                             <td>{info.value}</td>

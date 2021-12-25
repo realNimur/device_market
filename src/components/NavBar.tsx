@@ -5,7 +5,7 @@ import {Button, Container, Nav, Navbar} from "react-bootstrap";
 import {NavLink, useNavigate} from "react-router-dom";
 import {ADMIN_ROUTE, LOGIN_ROUTE, SHOP_ROUTE} from "../utils/consts";
 import styled from "styled-components";
-import {setAuth} from "../store/User/actionUser";
+import {setAuth, setUser} from "../store/User/actionUser";
 
 const NavLinkStyled = styled(NavLink)`
   color: white;
@@ -22,6 +22,13 @@ const NavBar = () => {
     const isAuth = useSelector(selectIsAuth);
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
+    const logOut = () => {
+        dispatch(setAuth(false));
+        dispatch(setUser({}));
+        localStorage.removeItem('token');
+    }
+
     return (
         <>
             <Navbar bg="dark" variant="dark">
@@ -38,14 +45,12 @@ const NavBar = () => {
                             >Админ панель</Button>
                             <Button
                                 variant={"outline-light"}
-                                onClick={() => {
-                                    navigate(LOGIN_ROUTE)
-                                }}>Выйти</Button>
+                                onClick={() => logOut()}>Выйти</Button>
                         </NavStyled>
                         :
                         <NavStyled className="ml-auto">
                             <Button variant={"outline-light"} onClick={() => {
-                                dispatch(setAuth(true))
+                                navigate(LOGIN_ROUTE)
                             }}>Авторизоваться</Button>
                         </NavStyled>
                     }

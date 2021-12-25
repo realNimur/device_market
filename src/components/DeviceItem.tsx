@@ -20,7 +20,7 @@ const DeviceItem = (props: DeviceItemProp) => {
     return (
         <Col md={3} className={'mb-2'} onClick={() => navigate(DEVICE_ROUTE + '/' + device.id)}>
             <CardStyled border={"light"}>
-                <Image src={device.img} height={150} width={150} alt={device.name} />
+                <Image src={process.env.REACT_APP_API_URL + device.img} height={150} width={150} alt={device.name} />
                 <div className="text-black-50 d-flex justify-content-between align-items-center mt-2">
                     <p>Samsung...</p>
                     <div className="d-flex align-items-center">

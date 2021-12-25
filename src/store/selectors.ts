@@ -5,6 +5,7 @@ type stateType = {
     user: userStoreType,
     device: deviceStoreType
 }
+export const selectAuthUser = (state: stateType) => state.user.user
 export const selectIsAuth = (state: stateType) => state.user.isAuth
 export const selectDevices = (state: stateType) => state.device.devices
 export const selectDevicesTypes = (state: stateType) => state.device.types

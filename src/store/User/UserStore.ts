@@ -1,4 +1,4 @@
-import {SET_AUTH} from "./actionUser";
+import {SET_AUTH, SET_USER} from "./actionUser";
 
 export const initialState = {
     isAuth: false,
@@ -13,6 +13,12 @@ type actionType = {
 
 export const userReducer = (state = initialState, {type, payload}: actionType) => {
     switch (type) {
+        case SET_USER: {
+            return {
+                ...state,
+                user: payload
+            }
+        }
         case SET_AUTH: {
             return {
                 ...state,

@@ -3,6 +3,7 @@ import {Button, Col, Dropdown, Form, Modal, Row} from "react-bootstrap";
 import {CreateTypeProps} from "../../types";
 import {useSelector} from "react-redux";
 import {selectDevicesBrands, selectDevicesTypes} from "../../store/selectors";
+import {deviceBrand, deviceType} from "../../store/Device/DeviceStore";
 
 const CreateDevice = ({show, onHide}: CreateTypeProps) => {
     const types = useSelector(selectDevicesTypes);
@@ -41,7 +42,7 @@ const CreateDevice = ({show, onHide}: CreateTypeProps) => {
                     <Dropdown>
                         <Dropdown.Toggle>Выберите тип</Dropdown.Toggle>
                         <Dropdown.Menu>
-                            {types.map((type) =>
+                            {types.map((type : deviceType) =>
                                 <Dropdown.Item key={type.id}>{type.name}</Dropdown.Item>
                             )}
                         </Dropdown.Menu>
@@ -49,7 +50,7 @@ const CreateDevice = ({show, onHide}: CreateTypeProps) => {
                     <Dropdown className={'mt-2'}>
                         <Dropdown.Toggle>Выберите бренд</Dropdown.Toggle>
                         <Dropdown.Menu>
-                            {brands.map((brand) =>
+                            {brands.map((brand : deviceBrand) =>
                                 <Dropdown.Item key={brand.id}>{brand.name}</Dropdown.Item>
                             )}
                         </Dropdown.Menu>

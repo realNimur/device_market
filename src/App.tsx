@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {BrowserRouter} from "react-router-dom";
 import AppRouter from "./components/AppRouter";
-import {Provider} from "react-redux";
-import {store} from "./store/";
 import NavBar from "./components/NavBar";
 import styled, {createGlobalStyle} from 'styled-components'
+import {useDispatch} from "react-redux";
+import {setAuth, setUser} from "./store/User/actionUser";
+import {Spinner} from "react-bootstrap";
+import {check} from "./http/userAPI";
 
 const Wrapper = styled.div`
   display: flex;
@@ -17,23 +19,35 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
   }
-  
-  p{
+
+  p {
     margin-bottom: 0;
   }
 `
 
 function App() {
+    const [loading, setLoading] = useState(true);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        check().then(data => {
+            dispatch(setUser(data))
+            dispatch(setAuth(true));
+        }).finally(() => setLoading(false))
+    }, []);
+
+    if (loading) {
+        return <Spinner animation={"grow"} />
+    }
+
     return (
-        <Provider store={store}>
-            <BrowserRouter>
-                <GlobalStyle />
-                <Wrapper>
-                    <NavBar />
-                    <AppRouter />
-                </Wrapper>
-            </BrowserRouter>
-        </Provider>
+        <BrowserRouter>
+            <GlobalStyle />
+            <Wrapper>
+                <NavBar />
+                <AppRouter />
+            </Wrapper>
+        </BrowserRouter>
     );
 }
 

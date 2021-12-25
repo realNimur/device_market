@@ -42,9 +42,7 @@ const CreateDevice = ({show, onHide}: CreateTypeProps) => {
     }
 
     const selectFile = (e: ChangeEvent<HTMLInputElement>) => {
-
         if (e.target.files) {
-            console.log(e.target.files[0]);
             setFile(e.target.files[0])
         }
     }
@@ -83,7 +81,7 @@ const CreateDevice = ({show, onHide}: CreateTypeProps) => {
                     <Dropdown>
                         <Dropdown.Toggle>{selectType.name ? selectType.name : "Выберите тип"}</Dropdown.Toggle>
                         <Dropdown.Menu>
-                            {types.map((type: deviceType) =>
+                            {types.map((type) =>
                                 <Dropdown.Item
                                     onClick={() => dispatch(setSelectedType(type))}
                                     key={type.id}
@@ -96,7 +94,7 @@ const CreateDevice = ({show, onHide}: CreateTypeProps) => {
                     <Dropdown className={'mt-2'}>
                         <Dropdown.Toggle>{selectBrand.name ? selectBrand.name : "Выберите бренд"}</Dropdown.Toggle>
                         <Dropdown.Menu>
-                            {brands.map((brand: deviceBrand) =>
+                            {brands.map((brand) =>
                                 <Dropdown.Item
                                     onClick={() => dispatch(setSelectedBrand(brand))}
                                     key={brand.id}

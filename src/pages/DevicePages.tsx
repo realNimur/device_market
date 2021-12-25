@@ -41,17 +41,6 @@ type DeviceParams = {
 }
 
 const DevicePages = () => {
-    // const device = {id: 1, name: 'Iphone 1', price: 25000, rating: 4.1, img: 'https://via.placeholder.com/250'};
-    // const description = [
-    //     {id: 1, title: 'Физическая память', value: '4, 8, 16 Гб'},
-    //     {id: 2, title: 'Размеры', value: '115.5 х 61 х 11.6 мм.'},
-    //     {id: 3, title: 'Вес устройства', value: '135 г.'},
-    //     {id: 4, title: 'ОЗУ', value: '128Мб'},
-    //     {id: 5, title: 'Частота процессора', value: '620 МГц'},
-    //     {id: 6, title: 'Разрешение экрана', value: '320 х 480'},
-    //     {id: 7, title: 'Камера ', value: '2.0 Мегапикселя'},
-    //     {id: 8, title: 'Датчики', value: 'акселерометр, датчики освещённости и приближения'},
-    // ]
     const [device, setDevice] = useState<DeviceParams>({
         name: null,
         img: null,

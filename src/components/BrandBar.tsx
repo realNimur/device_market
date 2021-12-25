@@ -17,7 +17,7 @@ const BrandBar = () => {
     return (
         <Row>
             <Col md={12} className={"d-flex flex-wrap"}>
-                {brands.map((brand : deviceBrand) =>
+                {brands.map((brand) =>
                     <CardWrapper
                         key={brand.id}
                         className="p-3"

@@ -1,4 +1,13 @@
-import {SET_BRANDS, SET_DEVICES, SET_SELECTED_BRAND, SET_SELECTED_TYPE, SET_TYPES} from "./actionDevice";
+import {
+    SET_BRANDS,
+    SET_CURRENT_PAGE,
+    SET_DEVICES,
+    SET_LIMIT_ITEM,
+    SET_SELECTED_BRAND,
+    SET_SELECTED_TYPE,
+    SET_TOTAL_COUNT,
+    SET_TYPES
+} from "./actionDevice";
 
 
 export const initialState = {
@@ -14,6 +23,11 @@ export const initialState = {
             id: null,
             name: null
         },
+    },
+    page: {
+        currentPage: 1,
+        totalCount: 0,
+        limitItem: 2
     }
 }
 export type deviceStoreType = typeof initialState;
@@ -54,6 +68,10 @@ export const deviceReducer = (state = initialState, {type, payload}: actionType)
                 selectedParam: {
                     ...state.selectedParam,
                     type: payload
+                },
+                page: {
+                    ...state.page,
+                    currentPage: 1
                 }
             }
         }
@@ -63,6 +81,37 @@ export const deviceReducer = (state = initialState, {type, payload}: actionType)
                 selectedParam: {
                     ...state.selectedParam,
                     brand: payload
+                },
+                page: {
+                    ...state.page,
+                    currentPage: 1
+                }
+            }
+        }
+        case SET_CURRENT_PAGE: {
+            return {
+                ...state,
+                page: {
+                    ...state.page,
+                    currentPage: payload
+                }
+            }
+        }
+        case SET_TOTAL_COUNT: {
+            return {
+                ...state,
+                page: {
+                    ...state.page,
+                    totalCount: payload
+                }
+            }
+        }
+        case SET_LIMIT_ITEM: {
+            return {
+                ...state,
+                page: {
+                    ...state.page,
+                    limitItem: payload
                 }
             }
         }

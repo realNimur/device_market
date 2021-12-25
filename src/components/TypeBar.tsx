@@ -21,7 +21,7 @@ const TypeBar = () => {
 
     return (
         <ListGroup>
-            {devicesTypes.map((item : deviceType) =>
+            {devicesTypes.map((item) =>
                 <ListGroupStyled
                     active={item.id === selectType?.id}
                     key={item.id}

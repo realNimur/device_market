@@ -24,7 +24,12 @@ const GlobalStyle = createGlobalStyle`
     margin-bottom: 0;
   }
 `
-
+const SpinnerStyled = styled(Spinner)`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%);
+`
 function App() {
     const [loading, setLoading] = useState(true);
     const dispatch = useDispatch();
@@ -37,7 +42,7 @@ function App() {
     }, []);
 
     if (loading) {
-        return <Spinner animation={"grow"} />
+        return <SpinnerStyled animation={"grow"} />
     }
 
     return (
